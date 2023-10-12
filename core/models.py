@@ -1,3 +1,5 @@
+from datetime import date
+
 from pydantic import BaseModel as PydanticModel
 
 from core.exceptions import InvalidInput
@@ -15,6 +17,7 @@ class Person(PydanticModel):
 
     first_name: str
     last_name: str
+    birth: date
     numerology: Numerology | None = None
 
     def __init__(self, **kwargs):

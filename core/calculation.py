@@ -17,8 +17,8 @@ letter_number = {
 def reduce_number(number: int) -> int:
     if number < 10 or number in (11, 22, 33):
         return number
-    str_number = str(number)
-    split_number = [int(val) for val in str_number.split()]
+
+    split_number = [int(val) for val in str(number)]
     result = 0
     for x in split_number:
         result += x
@@ -29,7 +29,7 @@ def calculate_number(word: str) -> int:
     number = 0
     for letter in word:
         number += letter_number[letter]
-    number = reduce_number(number)
+    return reduce_number(number)
 
 
 def make_numerology(person: Person) -> Person:
