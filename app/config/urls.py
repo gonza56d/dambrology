@@ -21,5 +21,5 @@ from app.views import NumerologyView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', NumerologyView.as_view())
+    path('', NumerologyView.as_view(), name='numerology')
 ]

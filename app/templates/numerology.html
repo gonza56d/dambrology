@@ -1,1 +1,10 @@
-asd
+
+<form method="POST" action="{% url 'numerology' %}">
+    {{ form }}
+    {% csrf_token %}
+    <button>Submit</button>
+</form>
+
+{{ person }}
+
+xd
