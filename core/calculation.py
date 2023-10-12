@@ -1,4 +1,4 @@
-from core.models import NumerologyStudyData, Person
+from core.models import Numerology, NumerologyStudyData, Person
 
 
 letter_number = {
@@ -34,3 +34,19 @@ def calculate_number(word: str) -> int:
 
 def make_numerology(person: Person) -> Person:
     study_data = NumerologyStudyData(person)
+    essence, image, destiny, path = 0, 0, 0, 0
+
+    for name in study_data.name_vowels:
+        essence += calculate_number(name)
+    essence = reduce_number(essence)
+
+    for name in study_data.name_consonants:
+        image += calculate_number(name)
+    image = reduce_number(image)
+
+    for name in study_data.name_complete:
+        destiny += calculate_number(name)
+    destiny = reduce_number(destiny)
+
+    person.numerology = Numerology(essence=essence, image=image, destiny=destiny, path=0)
+    return person

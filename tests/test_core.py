@@ -3,9 +3,9 @@ from unittest import TestCase
 
 import pytest
 
-from core.calculation import calculate_number, reduce_number
+from core.calculation import calculate_number, make_numerology, reduce_number
 from core.exceptions import InvalidInput
-from core.models import NumerologyStudyData, Person
+from core.models import Numerology, NumerologyStudyData, Person
 
 
 class TestNumerologyStudyData(TestCase):
@@ -15,9 +15,9 @@ class TestNumerologyStudyData(TestCase):
 
     def test_study_data(self):
         study_data = NumerologyStudyData(self.person)
-        assert study_data._name_vowels == ['oao', 'aue', 'aa']
-        assert study_data._name_consonants == ['gnzl', 'mnl', 'dmbr']
-        assert study_data._name_complete == ['gonzalo', 'manuel', 'dambra']
+        assert study_data.name_vowels == ['oao', 'aue', 'aa']
+        assert study_data.name_consonants == ['gnzl', 'mnl', 'dmbr']
+        assert study_data.name_complete == ['gonzalo', 'manuel', 'dambra']
 
     def test_invalid_name(self):
         with self.assertRaises(InvalidInput):
@@ -48,3 +48,24 @@ class TestCalculation:
     def test_reduce_number(self, number: int, expected_result: int):
         result = reduce_number(number)
         assert result == expected_result
+
+    @pytest.mark.parametrize(
+        'person, expected_numerology',
+        [
+            (
+                Person(first_name='Gonzalo Manuel', last_name='Dambra', birth=date(1996, 7, 1)),
+                Numerology(essence=6, image=9, destiny=6, path=0)
+            ),
+            (
+                Person(first_name='Victor Daniel', last_name='Dambra', birth=date(1956, 5, 15)),
+                Numerology(essence=5, image=4, destiny=9, path=0)
+            ),
+            (
+                Person(first_name='Lujan Victoria', last_name='Garcia', birth=date(2011, 7, 22)),
+                Numerology(essence=22, image=1, destiny=5, path=0)
+            ),
+        ]
+    )
+    def test_make_numerology(self, person: Person, expected_numerology: Numerology):
+        result = make_numerology(person)
+        assert result.numerology == expected_numerology

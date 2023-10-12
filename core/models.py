@@ -52,13 +52,13 @@ class NumerologyStudyData:
     _VOWELS = ('a', 'e', 'i', 'o', 'u')
 
     def __init__(self, person: Person) -> None:
-        self._name_complete = [*person.first_name.split(' '), *person.last_name.split(' ')]
+        self.name_complete = [*person.first_name.split(' '), *person.last_name.split(' ')]
 
-        self._name_vowels: list[str] = [
+        self.name_vowels: list[str] = [
             ''.join(letter for letter in name if letter in self._VOWELS)
-            for name in self._name_complete
+            for name in self.name_complete
         ]
-        self._name_consonants: list[str] = [
+        self.name_consonants: list[str] = [
             ''.join(letter for letter in name if letter not in self._VOWELS)
-            for name in self._name_complete
+            for name in self.name_complete
         ]
