@@ -18,6 +18,8 @@ class TestNumerologyStudyData(TestCase):
     def test_invalid_name(self):
         with self.assertRaises(InvalidInput):
             Person(first_name='Gön', last_name='Sómething')
+        with self.assertRaises(InvalidInput):
+            Person(first_name='Gon', last_name='Sömething')
 
     def test_valid_name_with_accents(self):
         person = Person(first_name='Góñ', last_name='Sómething')
