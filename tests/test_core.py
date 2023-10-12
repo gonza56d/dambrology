@@ -20,6 +20,6 @@ class TestNumerologyStudyData(TestCase):
             Person(first_name='Gön', last_name='Sómething')
 
     def test_valid_name_with_accents(self):
-        person = Person(first_name='Gón', last_name='Sómething')
+        person = Person(first_name='Góñ', last_name='Sómething')
         assert person.first_name == 'gon'
         assert person.last_name == 'something'
