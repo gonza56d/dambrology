@@ -1,4 +1,6 @@
+{% extends 'base.html' %}
 
+{% block content %}
 <form method="POST" action="{% url 'numerology' %}">
     {{ form }}
     {% csrf_token %}
@@ -8,3 +10,4 @@
 {{ person }}
 
 xd
+{% endblock %}
