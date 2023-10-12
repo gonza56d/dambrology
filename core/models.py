@@ -20,6 +20,13 @@ class Person(PydanticModel):
     def __init__(self, **kwargs):
         kwargs = self._clean_for_utf8(kwargs)
         super().__init__(**kwargs)
+        self._validate_ascii((self.first_name + self.last_name))
+
+    def _validate_ascii(self, names: str):
+        try:
+            names.encode('ascii')
+        except UnicodeError:
+            raise InvalidInput('Name must contain only utf-8 characters')
 
     def _clean_for_utf8(self, kwargs: dict) -> dict:
         kwargs['first_name'] = self._replace_for_utf8(kwargs['first_name'])
@@ -42,7 +49,6 @@ class NumerologyStudyData:
     _VOWELS = ('a', 'e', 'i', 'o', 'u')
 
     def __init__(self, person: Person) -> None:
-        self._validate_ascii((person.first_name + person.last_name))
         self._name_complete = [*person.first_name.split(' '), *person.last_name.split(' ')]
 
         self._name_vowels: list[str] = [
@@ -53,9 +59,3 @@ class NumerologyStudyData:
             ''.join(letter for letter in name if letter not in self._VOWELS)
             for name in self._name_complete
         ]
-
-    def _validate_ascii(self, names: str):
-        try:
-            names.encode('ascii')
-        except UnicodeError:
-            raise InvalidInput('Name must contain only utf-8 characters')
