@@ -54,15 +54,15 @@ class TestCalculation:
         [
             (
                 Person(first_name='Gonzalo Manuel', last_name='Dambra', birth=date(1996, 7, 1)),
-                Numerology(essence=6, image=9, destiny=6, path=0)
+                Numerology(essence=6, image=9, destiny=6, path=6)
             ),
             (
                 Person(first_name='Victor Daniel', last_name='Dambra', birth=date(1956, 5, 15)),
-                Numerology(essence=5, image=4, destiny=9, path=0)
+                Numerology(essence=5, image=4, destiny=9, path=5)
             ),
             (
                 Person(first_name='Lujan Victoria', last_name='Garcia', birth=date(2011, 7, 22)),
-                Numerology(essence=22, image=1, destiny=5, path=0)
+                Numerology(essence=22, image=1, destiny=5, path=33)
             ),
         ]
     )

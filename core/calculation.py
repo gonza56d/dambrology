@@ -48,5 +48,10 @@ def make_numerology(person: Person) -> Person:
         destiny += calculate_number(name)
     destiny = reduce_number(destiny)
 
-    person.numerology = Numerology(essence=essence, image=image, destiny=destiny, path=0)
+    day = reduce_number(person.birth.day)
+    month = reduce_number(person.birth.month)
+    year = reduce_number(person.birth.year)
+    path = reduce_number(day+month+year)
+
+    person.numerology = Numerology(essence=essence, image=image, destiny=destiny, path=path)
     return person
