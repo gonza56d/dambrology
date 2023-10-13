@@ -1,13 +1,13 @@
 .btn-dambrology {
     color: #fff;
     background-color: #a6074e;
-    border-color: #6d13a9
+    border-color: #4c0324
 }
 
 .btn-dambrology:hover {
-    color: #fff;
+    color: #ffc107;
     background-color: #9a0347;
-    border-color: #4c0324
+    border-color: #2f13a9
 }
 
 .btn-dambrology.focus, .btn-dambrology:focus {

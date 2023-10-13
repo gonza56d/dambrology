@@ -10,10 +10,18 @@ from core.models import Person
 class NumerologyView(View):
 
     def get(self, request: HttpRequest) -> HttpResponse:
-        form = NumerologyForm()
         person = request.session.get('person')
+        person_dict = eval(person) if person else None
+        numerology = person_dict.get('numerology') if person_dict else None
         request.session['person'] = None
-        return render(request, 'numerology.html', {'form': form, 'person': person})
+        form = NumerologyForm(
+            initial={
+                'first_name': person_dict.get('first_name'),
+                'last_name': person_dict.get('last_name'),
+                'birth': person_dict.get('birth')
+            } if person_dict is not None else {}
+        )
+        return render(request, 'numerology.html', {'form': form, 'numerology': numerology})
 
     def post(self, request: HttpRequest) -> HttpResponse:
         form = NumerologyForm(request.POST)

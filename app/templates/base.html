@@ -11,10 +11,14 @@
 
     <title>Hello, world!</title>
   </head>
-  <body>
-    <h1>Hello, world!</h1>
+  <body style="color:white;background-color:rgba(12,1,45,0.88)">
 
+    <div class="container mt-3">
+      <div class="row mb-5">
+        <div class="col-12 text-center"><h5>Dambrology</h5></div>
+      </div>
     {% block content%}{% endblock %}
+    </div>
 
     <script src="{% static '/js/jquery.min.js' %}"></script>
     <script src="{% static '/js/bootstrap.bundle.min.js' %}"></script>
