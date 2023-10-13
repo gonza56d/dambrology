@@ -1,0 +1,34 @@
+.btn-dambrology {
+    color: #fff;
+    background-color: #a6074e;
+    border-color: #6d13a9
+}
+
+.btn-dambrology:hover {
+    color: #fff;
+    background-color: #9a0347;
+    border-color: #4c0324
+}
+
+.btn-dambrology.focus, .btn-dambrology:focus {
+    color: #fff;
+    background-color: #9a0347;
+    border-color: #4c0324;
+    box-shadow: 0 0 0 .2rem rgba(166, 7, 78, .5)
+}
+
+.btn-dambrology.disabled, .btn-dambrology:disabled {
+    color: #bebdbd;
+    background-color: #570128;
+    border-color: #250211
+}
+
+.btn-dambrology:not(:disabled):not(.disabled).active, .btn-dambrology:not(:disabled):not(.disabled):active, .show > .btn-dambrology.dropdown-toggle {
+    color: #fff;
+    background-color: #bb135e;
+    border-color: #4c0324
+}
+
+.btn-dambrology:not(:disabled):not(.disabled).active:focus, .btn-dambrology:not(:disabled):not(.disabled):active:focus, .show > .btn-dambrology.dropdown-toggle:focus {
+    box-shadow: 0 0 0 .2rem rgba(183, 13, 89, 0.5)
+}
