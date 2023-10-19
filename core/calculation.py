@@ -73,6 +73,14 @@ def make_numerology(person: Person) -> Person:
     month = reduce_number(person.birth.month)
     year = reduce_number(person.birth.year)
     path = reduce_number(day+month+year)
+    present_and_missing_numbers = get_present_and_missing_numbers(person.full_name)
 
-    person.numerology = Numerology(essence=essence, image=image, destiny=destiny, path=path)
+    person.numerology = Numerology(
+        essence=essence,
+        image=image,
+        destiny=destiny,
+        path=path,
+        present_numbers=present_and_missing_numbers[0],
+        missing_numbers=present_and_missing_numbers[1],
+    )
     return person

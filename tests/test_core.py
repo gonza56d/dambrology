@@ -54,15 +54,36 @@ class TestCalculation:
         [
             (
                 Person(first_name='Gonzalo Manuel', last_name='Dambra', birth=date(1996, 7, 1)),
-                Numerology(essence=6, image=9, destiny=6, path=6)
+                Numerology(
+                    essence=6,
+                    image=9,
+                    destiny=6,
+                    path=6,
+                    present_numbers=[7, 6, 5, 8, 1, 3, 6, 4, 1, 5, 3, 5, 3, 4, 1, 4, 2, 9, 1],
+                    missing_numbers=[]
+                )
             ),
             (
                 Person(first_name='Victor Daniel', last_name='Dambra', birth=date(1956, 5, 15)),
-                Numerology(essence=5, image=4, destiny=9, path=5)
+                Numerology(
+                    essence=5,
+                    image=4,
+                    destiny=9,
+                    path=5,
+                    present_numbers=[4, 9, 3, 2, 6, 9, 4, 1, 5, 9, 5, 3, 4, 1, 4, 2, 9, 1],
+                    missing_numbers=[7, 8]
+                )
             ),
             (
                 Person(first_name='Lujan Victoria', last_name='Garcia', birth=date(2011, 7, 22)),
-                Numerology(essence=22, image=1, destiny=5, path=33)
+                Numerology(
+                    essence=22,
+                    image=1,
+                    destiny=5,
+                    path=33,
+                    present_numbers=[3, 3, 1, 1, 5, 4, 9, 3, 2, 6, 9, 9, 1, 7, 1, 9, 3, 9, 1],
+                    missing_numbers=[8]
+                )
             ),
         ]
     )
