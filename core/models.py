@@ -27,6 +27,10 @@ class Person(PydanticModel):
         super().__init__(**kwargs)
         self._validate_ascii((self.first_name + self.last_name))
 
+    @property
+    def full_name(self) -> str:
+        return f'{self.first_name} {self.last_name}'
+
     def _validate_ascii(self, names: str):
         try:
             names.encode('ascii')
