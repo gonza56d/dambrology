@@ -3,7 +3,7 @@ from unittest import TestCase
 
 import pytest
 
-from core.calculation import calculate_number, make_numerology, reduce_number
+from core.calculation import calculate_number, get_present_and_missing_numbers, make_numerology, reduce_number
 from core.exceptions import InvalidInput
 from core.models import Numerology, NumerologyStudyData, Person
 
@@ -69,3 +69,19 @@ class TestCalculation:
     def test_make_numerology(self, person: Person, expected_numerology: Numerology):
         result = make_numerology(person)
         assert result.numerology == expected_numerology
+
+
+class TestNumbersAndMissing:
+
+    @pytest.mark.parametrize(
+        'full_name, expected_numbers, expected_missing',
+        [
+            ('Gonzalo Manuel Dambra', [7, 6, 5, 8, 1, 3, 6, 4, 1, 5, 3, 5, 3, 4, 1, 4, 2, 9, 1], []),
+            ('Pepe Juan Perez', [7, 5, 7, 5, 1, 3, 1, 5, 7, 5, 9, 5, 8], [2, 4, 6]),
+            ('Alexi Laiho', [1, 3, 5, 6, 9, 3, 1, 9, 8, 6], [2, 4, 7])
+        ]
+    )
+    def test_get_present_and_missing_numbers(self, full_name: str, expected_numbers: list[int], expected_missing: list[int]):
+        results = get_present_and_missing_numbers(full_name)
+        assert results[0] == expected_numbers
+        assert results[1] == expected_missing

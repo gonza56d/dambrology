@@ -32,6 +32,27 @@ def calculate_number(word: str) -> int:
     return reduce_number(number)
 
 
+def get_present_and_missing_numbers(full_name: str) -> tuple[list[int], list[int]]:
+    """
+    Analyze all the numbers in the name for each letter.
+
+    Parameters:
+        full_name (str): The full name (first_name + last_name) of the person.
+
+    Returns:
+        tuple: first element is a list with the present numbers,
+            second element is a list with the missing numbers.
+    """
+    full_name = full_name.lower().replace(' ', '') if full_name is not None else None
+    result = ([], [number for number in range(1, 10)])
+    for letter in full_name:
+        present_number = letter_number[letter]
+        result[0].append(present_number)
+        if present_number in result[1]:
+            result[1].remove(present_number)
+    return result
+
+
 def make_numerology(person: Person) -> Person:
     study_data = NumerologyStudyData(person)
     essence, image, destiny, path = 0, 0, 0, 0
