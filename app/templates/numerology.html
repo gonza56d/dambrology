@@ -2,24 +2,33 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-12 col-md-3">
+    <div class="col-12 col-md-3 text-center">
         <form method="POST" action="{% url 'numerology' %}">
             {{ form }}
             {% csrf_token %}
             <button class="btn btn-dambrology btn-block my-4">calcular</button>
         </form>
     </div>
-    <div class="col-12 col-md-3">
+
+    <div class="col-12 col-md-2 text-center mt-2 mt-md-0">
         {% if numerology is not None %}
             <label for="person_essence">Esencia:</label>
-            <input id="person_essence" type="text" class="form-control mb-3" value="{{ numerology.essence }}">
+            <input id="person_essence" type="text" class="form-control mb-3 text-center" value="{{ numerology.essence }}">
             <label for="person_image">Imagen:</label>
-            <input id="person_image" type="text" class="form-control mb-3" value="{{ numerology.image }}">
+            <input id="person_image" type="text" class="form-control mb-3 text-center" value="{{ numerology.image }}">
             <label for="person_destiny">Destino:</label>
-            <input id="person_destiny" type="text" class="form-control mb-3" value="{{ numerology.destiny }}">
+            <input id="person_destiny" type="text" class="form-control mb-3 text-center" value="{{ numerology.destiny }}">
             <label for="person_path">Sendero natal:</label>
-            <input id="person_path" type="text" class="form-control mb-3" value="{{ numerology.path }}">
+            <input id="person_path" type="text" class="form-control mb-3 text-center" value="{{ numerology.path }}">
+        {% endif %}
+    </div>
+
+    <div class="col-12 col-md-7  mt-2 mt-md-0 text-center">
+        {% if numerology is not None %}
+            <label for="person_present_numbers">Números presentes:</label>
+            <input id="person_present_numbers" type="text" class="form-control mb-3 text-center" value="{{ numerology.present_numbers }}" disabled="">
+            <label for="person_missing_numbers">Números faltantes:</label>
+            <input id="person_missing_numbers" type="text" class="form-control mb-3 text-center" value="{{ numerology.missing_numbers }}" disabled="">
         {% endif %}
     </div>
 </div>

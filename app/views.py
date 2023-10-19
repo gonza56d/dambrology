@@ -13,6 +13,9 @@ class NumerologyView(View):
         person = request.session.get('person')
         person_dict = eval(person) if person else None
         numerology = person_dict.get('numerology') if person_dict else None
+        if numerology:
+            numerology['present_numbers'] = ''.join(f'{x}, ' for x in numerology['present_numbers'])[:-2]
+            numerology['missing_numbers'] = ''.join(f'{x}, ' for x in numerology['missing_numbers'])[:-2]
         request.session['person'] = None
         form = NumerologyForm(
             initial={
