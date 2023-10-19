@@ -11,6 +11,8 @@ class Numerology(PydanticModel):
     image: int
     destiny: int
     path: int
+    present_numbers: list[int] = []
+    missing_numbers: list[int] = []
 
 
 class Person(PydanticModel):
